@@ -4,7 +4,7 @@
 主要用js原生技术实现顶部搜索栏的透明效果，和轮播图以及定时器效果<br/>
 --
 实现的页面效果如下：<br/>
-![image](https://github.com/wangxiaozhan/Update-JD-WebPage/tree/master/images/01.png)   ![image](https://github.com/wangxiaozhan/Update-JD-WebPage/tree/master/images/02.png)      ![image](https://github.com/wangxiaozhan/Update-JD-WebPage/tree/master/images/03.png)<br/>
+![image](https://github.com/wangxiaozhan/Update-JD-WebPage/blob/master/images/01.png)   ![image](https://github.com/wangxiaozhan/Update-JD-WebPage/blob/master/images/02.png)      ![image](https://github.com/wangxiaozhan/Update-JD-WebPage/blob/master/images/03.png)<br/>
 主要方法：<br/>
 1：原生js 封装函数模块调用<br/>
 2：引用外部插件<br/>
