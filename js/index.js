@@ -1,3 +1,4 @@
+
 /*业务逻辑*/
 window.onload = function () {
     /*1.顶部搜索*/
@@ -9,8 +10,8 @@ window.onload = function () {
 };
 var search = function () {
     /*1.默认固定顶部，并且透明背景*/
-    var searchBox=document.querySelector('.jd_search_box');
-    var banner=document.querySelector('.jd_banner');
+    var searchBox = document.querySelector('.search_box');
+    var banner = document.querySelector('.banner');
     var height = banner.offsetHeight;
     /*监听页面的滚动*/
     window.onscroll = function () {
@@ -38,7 +39,7 @@ var banner = function () {
     /*5.滑动结束时，若滑动距离超过平【屏幕的三分之一，切换（上一章，下一章）  根据滑动的方向，过渡*/
 
     /*轮播图*/
-    var banner = document.querySelector('.jd_banner');
+    var banner = document.querySelector('.banner');
     /*屏幕宽度*/
     var width = banner.offsetWidth;
     /*图片容器*/
@@ -115,7 +116,7 @@ var banner = function () {
     /*绑定事件*/
     var startX;
     var distanceX;
-    var isMove=false;
+    var isMove = false;
     imageBox.addEventListener('touchstart', function (e) {
         /*当产生触摸点时，清掉定时器*/
         clearInterval(timer);
@@ -134,71 +135,71 @@ var banner = function () {
         /*为了让图片随手指做实时的滑动就得先把原先的过渡动画效果清掉*/
         removeTransition();
         setTranslateX(translateX);
-        isMove=true;
+        isMove = true;
     });
-    imageBox.addEventListener('touchend',function (e) {
-        if(isMove){
+    imageBox.addEventListener('touchend', function (e) {
+        if (isMove) {
             /*要使用移动的距离*/
-            if(Math.abs(distanceX)<width/3) {
+            if (Math.abs(distanceX) < width / 3) {
                 /*吸附回去*/
                 /*要实现吸附效果，就要先加动画*/
                 addTransition();
                 /*位移就是当前位移*/
                 setTranslateX(-index * width);
-            }else {
+            } else {
                 /*切换*/
                 /*上一章 右滑动*/
-                if(distanceX>0){
+                if (distanceX > 0) {
                     index--;
                 }
                 /*下一章 左滑动*/
-                else{
+                else {
                     index++;
                 }
                 addTransition();
-                setTranslateX(-index* width);
+                setTranslateX(-index * width);
             }
         }
 
         /*最好做一次参数的重置*/
-        startX=0;
-        distanceX=0;
-        isMove=false;
+        startX = 0;
+        distanceX = 0;
+        isMove = false;
         /*滑动结束后加上定时器*/
         /*加之前再做一次清除定时器，防止定时器被多次绑定*/
         clearInterval(timer);
-        timer=setInterval(function () {
+        timer = setInterval(function () {
             index++;
             /*加过渡*/
             addTransition();
             /*加位移*/
             setTranslateX(-index * width);
-        },5000);
+        }, 5000);
     })
 };
-var downTime=function () {
+var downTime = function () {
     /*倒计时的时间*/
-    var time=2*60*60;
+    var time = 2 * 60 * 60;
     /*事件盒子*/
-    var spans =document.querySelector('.time').querySelectorAll('span');
+    var spans = document.querySelector('.time').querySelectorAll('span');
     /*每一秒区更新显示的时间*/
-    var timer=setInterval(function () {
+    var timer = setInterval(function () {
         time--;
         /*时间格式要转换*/
-        var h=Math.floor(time/3600);
-        var m=Math.floor(time%3600/60);
-        var s=time%60;
+        var h = Math.floor(time / 3600);
+        var m = Math.floor(time % 3600 / 60);
+        var s = time % 60;
 
-        spans[0].innerHTML=Math.floor(h/10);
-        spans[1].innerHTML=h%10;
+        spans[0].innerHTML = Math.floor(h / 10);
+        spans[1].innerHTML = h % 10;
 
-        spans[3].innerHTML=Math.floor(m/10);
-        spans[4].innerHTML = m%10;
+        spans[3].innerHTML = Math.floor(m / 10);
+        spans[4].innerHTML = m % 10;
 
-        spans[6].innerHTML=Math.floor(s/10);
-        spans[7].innerHTML=s%20;
-        if(time<=0){
+        spans[6].innerHTML = Math.floor(s / 10);
+        spans[7].innerHTML = s % 20;
+        if (time <= 0) {
             clearInterval(timer);
         }
-    },1000);
+    }, 1000);
 };
